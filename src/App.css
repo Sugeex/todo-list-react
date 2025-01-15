@@ -2,15 +2,34 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
 }
 
 #root{
-    background-color: #242424;
+    background-color: #659dfe;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.titleTodo{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    justify-content: flex-start;
+    width: 96%;
+    max-width: 25rem;
+    gap: 0.2rem;
+}
+
+.titleTodo>h1{
+    font-weight: 900;
+}
+.titleTodo>span{
+    font-size: 2rem;
 }
 
 .container{
@@ -22,6 +41,7 @@
     min-height: 550px;
     border-radius: 0.75rem;
     padding: 1.5rem;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
 .formTodo{
@@ -40,12 +60,14 @@
     width: 90%;
 }
 .btnTodo{
-    background-color: #6db2f9;
+    background-color: #659dfe;
     border: none;
     padding: 1rem;
     border-radius: 0.5rem;
     cursor: pointer;
     transition: 0.3s ease;
+    font-weight: 800;
+    color: white;
 }
 .btnTodo:hover{
     opacity: 0.8;
@@ -54,15 +76,21 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    overflow: auto;
 }
 .itemList{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    word-break: break-all;
+}
+.itemList>label, input{
+    cursor: pointer;
 }
 .itemList>img{
     cursor: pointer;
     opacity: 0.3;
+    transition: 0.3s ease;
 }
 .itemList>img:hover{
     opacity: 1;

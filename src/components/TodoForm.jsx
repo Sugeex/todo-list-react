@@ -48,7 +48,7 @@ export default function TodoForm(){
             placeholder="Type something"
           />
           <button className="btnTodo" type="button" onClick={handleClick}>
-            Add
+            ADD
           </button>
         </form>
         <div className="todoList">
