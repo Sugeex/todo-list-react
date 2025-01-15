@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import TodoItem from "./TodoItem";
 
 export default function TodoForm(){
@@ -21,6 +21,22 @@ export default function TodoForm(){
         setShowList((prev) => [...prev, newTodoList]);
         inputV.current.value = "";
     };
+    function deleteItem(id) {
+      setShowList((prevItem) => {
+        return prevItem.filter((list) => list.id !== id);
+      });
+    }
+
+    function change(id) {
+      setShowList((prevItem) => {
+        return prevItem.map((list) => {
+          if (list.id === id) {
+            return { ...list, isComplite: !list.isComplite };
+          }
+          return list;
+        });
+      });
+    }
 
     return (
       <>
@@ -37,7 +53,16 @@ export default function TodoForm(){
         </form>
         <div className="todoList">
           {showList.map((item, index) => {
-            return <TodoItem text={item.text} key={index} />;
+            return (
+              <TodoItem
+                text={item.text}
+                id={item.id}
+                isComplite={item.isComplite}
+                deleteItem={deleteItem}
+                change={change}
+                key={item.id}
+              />
+            );
           })}
         </div>
       </>

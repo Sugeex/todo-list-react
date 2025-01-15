@@ -62,10 +62,15 @@
 }
 .itemList>img{
     cursor: pointer;
+    opacity: 0.3;
 }
 .itemList>img:hover{
-    opacity: 0.8;
+    opacity: 1;
 }
 .checkTodo{
     margin-right: 1rem;
+}
+.lineThrough{
+    text-decoration: line-through;
+    opacity: 0.8;
 }
