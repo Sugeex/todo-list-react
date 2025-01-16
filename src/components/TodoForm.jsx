@@ -11,6 +11,13 @@ export default function TodoForm() {
 
   const [formClass, setFormClass] = useState("inputTodo");
 
+  const handleKeyDown  = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleClick();
+    }
+  };
+
   function handleClick() {
     const inputText = inputV.current.value.trim();
 
@@ -57,6 +64,7 @@ export default function TodoForm() {
           ref={inputV}
           type="text"
           placeholder="Type your task"
+          onKeyDown={handleKeyDown}
         />
         <button className="btnTodo" type="button" onClick={handleClick}>
           ADD
