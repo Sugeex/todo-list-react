@@ -92,18 +92,39 @@
 .itemList>label, input{
     cursor: pointer;
 }
-.itemList>img{
-    cursor: pointer;
-    opacity: 0.3;
-    transition: 0.3s ease;
-}
-.itemList>img:hover{
-    opacity: 1;
-}
+
 .checkTodo{
     margin-right: 1rem;
 }
 .lineThrough{
     text-decoration: line-through;
+    opacity: 0.8;
+}
+
+.btnsTodo>img{
+    cursor: pointer;
+    opacity: 0.3;
+    transition: 0.3s ease;
+}
+.btnsTodo>img:hover{
+    opacity: 1;
+}
+.editInput{
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    width: 71%;
+}
+.btnSave{
+    border: none;
+    background-color: #659dfe;
+    cursor: pointer;
+    color: #fff;
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    font-weight: 800;
+    transition: 0.3s ease;
+}
+.btnSave:hover{
     opacity: 0.8;
 }

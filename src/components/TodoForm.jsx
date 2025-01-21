@@ -52,6 +52,17 @@ export default function TodoForm() {
     });
   }
 
+  function editItem(id, newText) {
+    setShowList((prevItem) => {
+      return prevItem.map((list) => {
+        if (list.id === id) {
+          return { ...list, text: newText };
+        }
+        return list;
+      });
+    });
+  }
+
   useEffect(() => {
     localStorage.setItem("listItem", JSON.stringify(showList));
   }, [showList]);
@@ -71,7 +82,7 @@ export default function TodoForm() {
         </button>
       </form>
       <div className="todoList">
-        {showList.map((item, index) => {
+        {showList.map((item) => {
           return (
             <TodoItem
               text={item.text}
@@ -79,6 +90,7 @@ export default function TodoForm() {
               isComplite={item.isComplite}
               deleteItem={deleteItem}
               change={change}
+              editItem={editItem}
               key={item.id}
             />
           );
