@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import TodoItem from "./TodoItem";
+import TodoPlaceholder from "./TodoPlaceholder/TodoPlaceholder";
 
 export default function TodoForm() {
   const inputV = useRef();
@@ -8,7 +9,7 @@ export default function TodoForm() {
       ? JSON.parse(localStorage.getItem("listItem"))
       : []
   );
-
+  console.log(showList);
   const [formClass, setFormClass] = useState("inputTodo");
 
   const handleKeyDown  = (event) => {
@@ -81,21 +82,25 @@ export default function TodoForm() {
           ADD
         </button>
       </form>
-      <div className="todoList">
-        {showList.map((item) => {
-          return (
-            <TodoItem
-              text={item.text}
-              id={item.id}
-              isComplite={item.isComplite}
-              deleteItem={deleteItem}
-              change={change}
-              editItem={editItem}
-              key={item.id}
-            />
-          );
-        })}
-      </div>
+      {showList.length === 0 ? (
+        <TodoPlaceholder />
+      ) : (
+        <div className="todoList">
+          {showList.map((item) => {
+            return (
+              <TodoItem
+                text={item.text}
+                id={item.id}
+                isComplite={item.isComplite}
+                deleteItem={deleteItem}
+                change={change}
+                editItem={editItem}
+                key={item.id}
+              />
+            );
+          })}
+        </div>
+      )}
     </>
   );
 }
