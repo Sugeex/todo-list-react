@@ -1,0 +1,28 @@
+.itemList{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    word-break: break-all;
+}
+.itemList>label, input{
+    cursor: pointer;
+}
+
+.checkTodo{
+    margin-right: 1rem;
+}
+.lineThrough{
+    text-decoration: line-through;
+    opacity: 0.8;
+}
+.btnsTodo{
+    flex-shrink: 0;
+}
+.btnsTodo>img{
+    cursor: pointer;
+    opacity: 0.3;
+    transition: 0.3s ease;
+}
+.btnsTodo>img:hover{
+    opacity: 1;
+}

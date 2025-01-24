@@ -1,15 +1,12 @@
-import { useState, useRef, useEffect } from "react";
-import TodoItem from "./TodoItem";
+import { useState, useRef} from "react";
+import TodoItem from "./TodoItem/TodoItem";
 import TodoPlaceholder from "./TodoPlaceholder/TodoPlaceholder";
+import useLocalStorage from "../hooks/useLocalStorage";
+import TodoInput from "./TodoInput/TodoInput";
 
 export default function TodoForm() {
   const inputV = useRef();
-  const [showList, setShowList] = useState(
-    localStorage.getItem("listItem")
-      ? JSON.parse(localStorage.getItem("listItem"))
-      : []
-  );
-  console.log(showList);
+  const [showList, setShowList] = useLocalStorage("listItem", []);
   const [formClass, setFormClass] = useState("inputTodo");
 
   const handleKeyDown  = (event) => {
@@ -64,24 +61,14 @@ export default function TodoForm() {
     });
   }
 
-  useEffect(() => {
-    localStorage.setItem("listItem", JSON.stringify(showList));
-  }, [showList]);
-
   return (
     <>
-      <form className="formTodo">
-        <input
-          className={formClass}
-          ref={inputV}
-          type="text"
-          placeholder="Type your task"
-          onKeyDown={handleKeyDown}
-        />
-        <button className="btnTodo" type="button" onClick={handleClick}>
-          ADD
-        </button>
-      </form>
+      <TodoInput
+        formClass={formClass}
+        inputV={inputV}
+        handleKeyDown={handleKeyDown}
+        handleClick={handleClick}
+      />
       {showList.length === 0 ? (
         <TodoPlaceholder />
       ) : (

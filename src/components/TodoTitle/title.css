@@ -1,0 +1,16 @@
+.titleTodo{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    justify-content: flex-start;
+    width: 96%;
+    max-width: 25rem;
+    gap: 0.2rem;
+}
+
+.titleTodo>h1{
+    font-weight: 900;
+}
+.titleTodo>h1,span{
+    font-size: 2rem;
+}

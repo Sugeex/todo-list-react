@@ -1,0 +1,34 @@
+.formTodo{
+    background-color: #e9e9e9;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.inputTodo{
+    border: none;
+    background-color: transparent;
+    padding-left: 1rem;
+    outline: none;
+    width: 90%;
+    font-size: 1rem;
+}
+.red{
+    border: 1px solid red;
+    border-radius: 0.5rem;
+}
+
+.btnTodo{
+    background-color: #659dfe;
+    border: none;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 800;
+    color: white;
+}
+.btnTodo:hover{
+    opacity: 0.8;
+}

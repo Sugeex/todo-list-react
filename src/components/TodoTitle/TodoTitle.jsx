@@ -1,3 +1,5 @@
+import './title.css'
+
 export default function TodoTitle() {
     return (
       <div className="titleTodo">

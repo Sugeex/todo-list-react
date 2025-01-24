@@ -1,8 +1,7 @@
-import { useState } from 'react'
 import TodoForm from './components/TodoForm';
 import './App.css'
 import './assets/fonts.css'
-import TodoTitle from './components/TodoTitle';
+import TodoTitle from './components/TodoTitle/TodoTitle';
 
 function App() {
 

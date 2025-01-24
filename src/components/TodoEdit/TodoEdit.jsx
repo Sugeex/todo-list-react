@@ -1,4 +1,5 @@
 import { useState } from "react"
+import "./edit.css"
 
 export default function TodoEdit({ text, id, onSave }) {
   const [editingText, setEditingText] = useState(text);

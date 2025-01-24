@@ -1,7 +1,8 @@
 import { useState } from "react";
-import deleteBtn from "../assets/deleteBtn.svg";
-import editBtn from "../assets/editBtn.svg";
-import TodoEdit from "./TodoEdit";
+import deleteBtn from "../../assets/deleteBtn.svg";
+import editBtn from "../../assets/editBtn.svg";
+import TodoEdit from "../TodoEdit/TodoEdit";
+import './itemTodo.css';
 
 export default function TodoItem({ text, id, isComplite, deleteItem, change, editItem }) {
   const [isEditing, setIsEditing] = useState(false);

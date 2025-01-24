@@ -1,0 +1,19 @@
+.editInput{
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    width: 71%;
+}
+.btnSave{
+    border: none;
+    background-color: #659dfe;
+    cursor: pointer;
+    color: #fff;
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    font-weight: 800;
+    transition: 0.3s ease;
+}
+.btnSave:hover{
+    opacity: 0.8;
+}
