@@ -3,6 +3,7 @@ import TodoItem from "./TodoItem/TodoItem";
 import TodoPlaceholder from "./TodoPlaceholder/TodoPlaceholder";
 import useLocalStorage from "../hooks/useLocalStorage";
 import TodoInput from "./TodoInput/TodoInput";
+import TodoCount from "./TodoCount/TodoCount";
 
 export default function TodoForm() {
   const inputV = useRef();
@@ -72,6 +73,8 @@ export default function TodoForm() {
       {showList.length === 0 ? (
         <TodoPlaceholder />
       ) : (
+        <>
+        <TodoCount counter={showList} />
         <div className="todoList">
           {showList.map((item) => {
             return (
@@ -87,6 +90,7 @@ export default function TodoForm() {
             );
           })}
         </div>
+        </>
       )}
     </>
   );

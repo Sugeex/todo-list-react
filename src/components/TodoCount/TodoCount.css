@@ -1,0 +1,9 @@
+.counterCont{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.amountT>span{
+    font-size: 1rem;
+}
