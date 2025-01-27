@@ -6,11 +6,11 @@ export default function TodoCount({ counter }) {
     <div className="counterCont">
       <div className="amountT">
         <span>Tasks </span>
-        <span>{counter.length}</span>
+        <span className='amountNumber'>{counter.length}</span>
       </div>
       <div className='amountT'>
         <span>Done </span>
-        <span>
+        <span className='amountNumber'>
           {complit} of {counter.length}
         </span>
       </div>
