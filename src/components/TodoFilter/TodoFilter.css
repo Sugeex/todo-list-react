@@ -1,0 +1,27 @@
+.filterCont{
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.filterBtns{
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.6rem;
+}
+.filterBtn{
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: #242424;
+    font-size: 0.9rem;
+    transition: 0.3s ease;
+}
+.filterBtn:hover{
+    opacity: 0.6;
+}
+.currentFilter{
+    border: 1px solid #659dfe;
+    border-radius: 0.5rem;
+    padding: 0 0.5rem;
+    color: #659dfe;
+}

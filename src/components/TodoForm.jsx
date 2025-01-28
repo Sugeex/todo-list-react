@@ -4,12 +4,14 @@ import TodoPlaceholder from "./TodoPlaceholder/TodoPlaceholder";
 import useLocalStorage from "../hooks/useLocalStorage";
 import TodoInput from "./TodoInput/TodoInput";
 import TodoCount from "./TodoCount/TodoCount";
+import TodoFilter from "./TodoFilter/TodoFilter";
 
 export default function TodoForm() {
   const inputV = useRef();
   const [showList, setShowList] = useLocalStorage("listItem", []);
   const [formClass, setFormClass] = useState("inputTodo");
-
+  const [filter, setFilter] = useState("all");
+  
   const handleKeyDown  = (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
@@ -62,6 +64,10 @@ export default function TodoForm() {
     });
   }
 
+  const filteredList = showList.filter((item) => 
+    filter === "all" ? true : filter === "active" ? !item.isComplite : item.isComplite
+  );
+
   return (
     <>
       <TodoInput
@@ -76,7 +82,7 @@ export default function TodoForm() {
         <>
         <TodoCount counter={showList} />
         <div className="todoList">
-          {showList.map((item) => {
+          {filteredList.map((item) => {
             return (
               <TodoItem
                 text={item.text}
@@ -90,6 +96,7 @@ export default function TodoForm() {
             );
           })}
         </div>
+        <TodoFilter filter={filter} setFilter={setFilter}/>
         </>
       )}
     </>
