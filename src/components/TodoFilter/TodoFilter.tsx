@@ -1,6 +1,12 @@
-import './TodoFilter.css'
+import { FC } from "react";
+import "./TodoFilter.css";
 
-export default function ({ filter, setFilter }) {
+interface TodoFilterProps {
+  filter: "all" | "active" | "done";
+  setFilter: (filter: "all" | "active" | "done") => void;
+}
+
+const TodoFilter: FC<TodoFilterProps> = ({ filter, setFilter }) => {
   return (
     <div className="filterCont">
       <div className="filterBtns">
@@ -11,13 +17,17 @@ export default function ({ filter, setFilter }) {
           All
         </button>
         <button
-          className={filter === "active" ? "filterBtn currentFilter" : "filterBtn"}
+          className={
+            filter === "active" ? "filterBtn currentFilter" : "filterBtn"
+          }
           onClick={() => setFilter("active")}
         >
           Active
         </button>
         <button
-          className={filter === "done" ? "filterBtn currentFilter" : "filterBtn"}
+          className={
+            filter === "done" ? "filterBtn currentFilter" : "filterBtn"
+          }
           onClick={() => setFilter("done")}
         >
           Done
@@ -25,4 +35,6 @@ export default function ({ filter, setFilter }) {
       </div>
     </div>
   );
-}
+};
+
+export default TodoFilter;

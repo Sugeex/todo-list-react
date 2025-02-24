@@ -1,8 +1,14 @@
-import { useState } from "react"
-import "./edit.css"
+import { FC, useState } from "react";
+import "./edit.css";
 
-export default function TodoEdit({ text, id, onSave }) {
-  const [editingText, setEditingText] = useState(text);
+interface TodoEditProps {
+  text: string;
+  id: number;
+  onSave: (id: number, newText: string) => void;
+}
+
+const TodoEdit: FC<TodoEditProps> = ({ text, id, onSave }) => {
+  const [editingText, setEditingText] = useState<string>(text);
 
   function handleSave() {
     const trimText = editingText.trim();
@@ -26,4 +32,6 @@ export default function TodoEdit({ text, id, onSave }) {
       </button>
     </>
   );
-}
+};
+
+export default TodoEdit;
