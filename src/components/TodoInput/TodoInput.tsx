@@ -1,6 +1,14 @@
 import "./input.css"
+import { FC, RefObject } from "react";
 
-export default function TodoInput({formClass, inputV, handleKeyDown, handleClick}) {
+interface TodoInputProps {
+  formClass: string;
+  inputV: RefObject<HTMLInputElement>;
+  handleKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+  handleClick: () => void;
+}
+
+ const TodoInput:FC<TodoInputProps> = ({formClass, inputV, handleKeyDown, handleClick}) => {
   return (
     <form className="formTodo">
       <input
@@ -16,3 +24,5 @@ export default function TodoInput({formClass, inputV, handleKeyDown, handleClick
     </form>
   );
 }
+
+export default TodoInput;

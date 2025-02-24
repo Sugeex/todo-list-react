@@ -1,4 +1,4 @@
-import { useState, useRef} from "react";
+import { useState, useRef, FC } from "react";
 import TodoItem from "./TodoItem/TodoItem";
 import TodoPlaceholder from "./TodoPlaceholder/TodoPlaceholder";
 import useLocalStorage from "../hooks/useLocalStorage";
@@ -6,13 +6,19 @@ import TodoInput from "./TodoInput/TodoInput";
 import TodoCount from "./TodoCount/TodoCount";
 import TodoFilter from "./TodoFilter/TodoFilter";
 
-export default function TodoForm() {
-  const inputV = useRef();
-  const [showList, setShowList] = useLocalStorage("listItem", []);
-  const [formClass, setFormClass] = useState("inputTodo");
-  const [filter, setFilter] = useState("all");
-  
-  const handleKeyDown  = (event) => {
+interface TodoItem {
+  id: number;
+  text: string;
+  isComplite: boolean;
+}
+
+const TodoForm: FC = () => {
+  const inputV = useRef<HTMLInputElement>(null);
+  const [showList, setShowList] = useLocalStorage<TodoItem[]>("listItem", []);
+  const [formClass, setFormClass] = useState<string>("inputTodo");
+  const [filter, setFilter] = useState<"all" | "active" | "done">("all");
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       event.preventDefault();
       handleClick();
@@ -20,6 +26,8 @@ export default function TodoForm() {
   };
 
   function handleClick() {
+    if (!inputV.current) return;
+
     const inputText = inputV.current.value.trim();
 
     if (inputText === "") {
@@ -36,13 +44,13 @@ export default function TodoForm() {
     inputV.current.value = "";
     setFormClass("inputTodo");
   }
-  function deleteItem(id) {
+  function deleteItem(id: number) {
     setShowList((prevItem) => {
       return prevItem.filter((list) => list.id !== id);
     });
   }
 
-  function change(id) {
+  function change(id: number) {
     setShowList((prevItem) => {
       return prevItem.map((list) => {
         if (list.id === id) {
@@ -53,7 +61,7 @@ export default function TodoForm() {
     });
   }
 
-  function editItem(id, newText) {
+  function editItem(id: number, newText: string) {
     setShowList((prevItem) => {
       return prevItem.map((list) => {
         if (list.id === id) {
@@ -64,8 +72,12 @@ export default function TodoForm() {
     });
   }
 
-  const filteredList = showList.filter((item) => 
-    filter === "all" ? true : filter === "active" ? !item.isComplite : item.isComplite
+  const filteredList = showList.filter((item) =>
+    filter === "all"
+      ? true
+      : filter === "active"
+      ? !item.isComplite
+      : item.isComplite
   );
 
   return (
@@ -80,25 +92,27 @@ export default function TodoForm() {
         <TodoPlaceholder />
       ) : (
         <>
-        <TodoCount counter={showList} />
-        <div className="todoList">
-          {filteredList.map((item) => {
-            return (
-              <TodoItem
-                text={item.text}
-                id={item.id}
-                isComplite={item.isComplite}
-                deleteItem={deleteItem}
-                change={change}
-                editItem={editItem}
-                key={item.id}
-              />
-            );
-          })}
-        </div>
-        <TodoFilter filter={filter} setFilter={setFilter}/>
+          <TodoCount counter={showList} />
+          <div className="todoList">
+            {filteredList.map((item) => {
+              return (
+                <TodoItem
+                  text={item.text}
+                  id={item.id}
+                  isComplite={item.isComplite}
+                  deleteItem={deleteItem}
+                  change={change}
+                  editItem={editItem}
+                  key={item.id}
+                />
+              );
+            })}
+          </div>
+          <TodoFilter filter={filter} setFilter={setFilter} />
         </>
       )}
     </>
   );
-}
+};
+
+export default TodoForm;

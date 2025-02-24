@@ -1,17 +1,26 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import deleteBtn from "../../assets/deleteBtn.svg";
 import editBtn from "../../assets/editBtn.svg";
 import TodoEdit from "../TodoEdit/TodoEdit";
 import './itemTodo.css';
 
-export default function TodoItem({ text, id, isComplite, deleteItem, change, editItem }) {
-  const [isEditing, setIsEditing] = useState(false);
+interface TodoItemProps {
+  text: string;
+  id: number;
+  isComplite: boolean;
+  deleteItem: (id: number) => void;
+  change: (id: number) => void;
+  editItem: (id: number, newText: string) => void;
+}
+
+ const TodoItem:FC<TodoItemProps> = ({ text, id, isComplite, deleteItem, change, editItem }) => {
+  const [isEditing, setIsEditing] = useState<boolean>(false);
 
   function handleEditStart() {
     setIsEditing(true);
   }
 
-  function saveEdit(id, newText) {
+  function saveEdit(id: number, newText: string) {
     editItem(id, newText);
     setIsEditing(false);
   }
@@ -40,3 +49,5 @@ export default function TodoItem({ text, id, isComplite, deleteItem, change, edi
     </div>
   );
 }
+
+export default TodoItem;
